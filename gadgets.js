@@ -37,7 +37,8 @@ const sections = [
 		header:'Usage:', 
 		content:[
 			"$ node gadget.js --help",
-			"$ node gadget.js -qscan <ip>"
+			"$ node gadget.js -qscan -t <ip>",
+			"$ node gadget.js -t [target] -qscan [Quick Scan]"
 		]
 	},     
 	{
@@ -49,7 +50,14 @@ const sections = [
 			{ name: '-sS:', summary: ': Perform stealth scan on target'},
 			{ name: '-dis:', summary: ': Displays more options'}
 		],
-	}
+	},
+	{
+		header:'Exmaples:',
+		content:[
+				{ name: 'node gadjets.js -t 127.0.0.1 -qscan' },
+				{ name: 'node gadjets.js -t 127.0.0.1 --banner -sS' }
+			]
+		}
 ]
 
 console.log(usage(sections))
@@ -59,18 +67,18 @@ console.log(usage(sections))
 // const ipAddress = readline.question(`Enter Ip of target:`)
 
 // Arguments
-if(argv.ip){
-	const quickscan = new nmap.quickscan(`${argv.ip}`)
+// if(argv.ip){
+// 	const quickscan = new nmap.quickscan(`${argv.ip}`)
 
 
-	// Logs data from scan
-	quickscan.on('complete', function(data){
-		console.log(data)
-		console.log('scan time' + scan.scanTime);
-	})
+// 	// Logs data from scan
+// 	quickscan.on('complete', function(data){
+// 		console.log(data)
+// 		console.log('scan time' + scan.scanTime);
+// 	})
 
-	// Logs errors from scan
-	quickscan.on('error', function(error){
-		console.log(error)
-	})
-}
+// 	// Logs errors from scan
+// 	quickscan.on('error', function(error){
+// 		console.log(error)
+// 	})
+// }
