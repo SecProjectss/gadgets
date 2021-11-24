@@ -1,0 +1,17 @@
+{
+  "name": "gadgets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gadgets.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DevDeclann",
+  "license": "ISC",
+  "dependencies": {
+    "command-line-usage": "^6.1.1",
+    "node-nmap": "^4.0.0",
+    "readline-sync": "^1.4.10",
+    "yargs": "^17.2.1"
+  }
+}
