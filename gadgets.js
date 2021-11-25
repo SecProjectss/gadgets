@@ -20,7 +20,7 @@ header = `
  ░▒   ▒ ░ ▒░▒░▒░  ░▒   ▒ ░ ▒░▒░▒░     ░▒   ▒  ▒▒   ▓▒█░ ▒▒▓  ▒  ░▒   ▒ ░░ ▒░ ░ ▒ ░░   ▒ ▒▓▒ ▒ ░
   ░   ░   ░ ▒ ▒░   ░   ░   ░ ▒ ▒░      ░   ░   ▒   ▒▒ ░ ░ ▒  ▒   ░   ░  ░ ░  ░   ░    ░ ░▒  ░ ░
 ░ ░   ░ ░ ░ ░ ▒  ░ ░   ░ ░ ░ ░ ▒     ░ ░   ░   ░   ▒    ░ ░  ░ ░ ░   ░    ░    ░      ░  ░  ░  
-      ░     ░ ░        ░     ░ ░           ░       ░  ░   ░          ░    ░  ░              ░                                                         ░                                      
+      ░     ░ ░        ░     ░ ░           ░       ░  ░   ░          ░    ░  ░              ░                                                                                           
 `
 
 // Displays info and usage
@@ -61,47 +61,35 @@ const sections = [
 ]
 console.log(usage(sections))
 
-// const ipAddress = readline.question(`Enter Ip of target:`)
+
+
+
+
+
 // Arguments
-
-
-// console.log(process.argv)
-
 for (let i = 0; i < process.argv.length; i++) {
   const element = process.argv[i];
   if (element === "--qscan"){
-  
+
   const quickscan = new nmap.QuickScan('192.168.1.1');
   	quickscan.on('complete', function(data){
-		console.log(data);
+  	
+  	// Logs scanned info
+  	const output = data[0]
+		console.log(output);
 	})
 
 		quickscan.on('error', function(error){
-		console.log(error);
+		console.log(`Oops error occured`);
 	})
   } 
 }
 
+
+// console.log(process.argv)
 
 // let optionDefinitions = [
 // 	{ name: 'target', alias: '-t', type: Number },
 // 	{ name: 'qscan', alias: '-qS', type:  Number }
 // 	// { name: 'banner', alias: 'b', type:  },
 // ]
-
-// console.log(optionDefinitions)
-
-// const options = args(optionDefinitions)
-
-
-// if(optionDefinitions.qscan){
-// 	const quickscan = new nmap.quickscan();
-
-// 	quickscan.on('complete', function(data){
-// 		console.log(data);
-// 	})
-
-// 	quickscan.on('error', function(error){
-// 		console.log(error);
-// 	})
-// }
