@@ -1,6 +1,6 @@
 # gadgets
 
-<p>Nodejs sercuirty kit</p>
+<p>Nodejs security kit</p>
 
 # Features
 <ul>
