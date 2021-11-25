@@ -1,4 +1,4 @@
-# gadgets
+# gadgets v.1.0
 
 <p>Nodejs security kit</p>
 
