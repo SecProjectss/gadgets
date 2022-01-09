@@ -7,22 +7,28 @@
 const nmap = require('node-nmap');
 const usage = require('command-line-usage');
 const chalk = require('chalk');
-const readline = require('readline-sync')
-const args = require('command-line-args')
-const yargs = require('yargs')
-
+const readline = require('readline-sync');
+const args = require('command-line-args');
+const yargs = require('yargs')(process.argv);
+const fs = require('fs');
+// const argv = require('minimist');
+																			
 header = `
-  ▄████  ▒█████    ▄████  ▒█████       ▄████  ▄▄▄      ▓█████▄   ▄████ ▓█████▄▄▄█████▓  ██████ 
- ██▒ ▀█▒▒██▒  ██▒ ██▒ ▀█▒▒██▒  ██▒    ██▒ ▀█▒▒████▄    ▒██▀ ██▌ ██▒ ▀█▒▓█   ▀▓  ██▒ ▓▒▒██    ▒ 
-▒██░▄▄▄░▒██░  ██▒▒██░▄▄▄░▒██░  ██▒   ▒██░▄▄▄░▒██  ▀█▄  ░██   █▌▒██░▄▄▄░▒███  ▒ ▓██░ ▒░░ ▓██▄   
-░▓█  ██▓▒██   ██░░▓█  ██▓▒██   ██░   ░▓█  ██▓░██▄▄▄▄██ ░▓█▄   ▌░▓█  ██▓▒▓█  ▄░ ▓██▓ ░   ▒   ██▒
-░▒▓███▀▒░ ████▓▒░░▒▓███▀▒░ ████▓▒░   ░▒▓███▀▒ ▓█   ▓██▒░▒████▓ ░▒▓███▀▒░▒████▒ ▒██▒ ░ ▒██████▒▒
- ░▒   ▒ ░ ▒░▒░▒░  ░▒   ▒ ░ ▒░▒░▒░     ░▒   ▒  ▒▒   ▓▒█░ ▒▒▓  ▒  ░▒   ▒ ░░ ▒░ ░ ▒ ░░   ▒ ▒▓▒ ▒ ░
-  ░   ░   ░ ▒ ▒░   ░   ░   ░ ▒ ▒░      ░   ░   ▒   ▒▒ ░ ░ ▒  ▒   ░   ░  ░ ░  ░   ░    ░ ░▒  ░ ░
-░ ░   ░ ░ ░ ░ ▒  ░ ░   ░ ░ ░ ░ ▒     ░ ░   ░   ░   ▒    ░ ░  ░ ░ ░   ░    ░    ░      ░  ░  ░  
-      ░     ░ ░        ░     ░ ░           ░       ░  ░   ░          ░    ░  ░              ░                                                                                           
+		               &&&&&&&&&&&&&&&                              
+		               &&&&&&&&&&&&&&                               
+		               @&&&&&&&&&&&&&                               
+		                &&&&&&&&&&&&&                               
+		                &&&&&&&&&&&&@                               
+		            &&&&&&&&&&&&&&&&&&&&&                           
+		              * %&&&&&&&&&&# &                              
+		              @ &  .         #   .                          
+		               &            ,&                              
+		               &&&         &                                
+		            &&&&%   /&&@                           
+		          &&&&                                              
+		       &&&&%                                                                                                                                        
 `
-
+																																								
 // Displays info and usage
 const sections = [
  	{
@@ -47,8 +53,7 @@ const sections = [
 			{ name: '--help', summary: ': Displays Help information'},
 			{ name: '--banner', summary: ': Grabs informaton about what the hosts using'},
 			{ name: '--qscan', summary: ': Peforms a fast scan on a target, gaining info about port/services'},
-			{ name: '-sS', summary: ': Perform stealth scan on target'},
-			{ name: '-dis', summary: ': Displays more options'}
+			{ name: '-sS', summary: ': Perform stealth scan on target'}
 		],
 	},
 	{
@@ -60,36 +65,47 @@ const sections = [
 		}
 ]
 console.log(usage(sections))
+// Arguments		
+// for (let i = 0; i < process.argv.length; i++) {
+//   const element = process.argv[i];
+//   if (element === "--qscan"){
 
+//  const quickscan = new nmap.QuickScan(`${argv.value}`);
+//   	quickscan.on('complete', function(data){
 
+//   	// Logs scanned info
+//   	const output = data[0]
+// 		console.log(output);
+// 	})
 
+// 		quickscan.on('error', function(error){
+// 		console.log(`Oops error occured`);
+// 	})
+//   } 
+// }
 
+const argv = yargs
+	.option('target', {
+		alias: 't',
+		type: 'boolean'
+	})
+	.argv;
 
-
-// Arguments
-for (let i = 0; i < process.argv.length; i++) {
-  const element = process.argv[i];
-  if (element === "--qscan"){
-
-  const quickscan = new nmap.QuickScan('192.168.1.1');
+if (argv.target){
+	const quickscan = new nmap.QuickScan('127.0.0.1');
   	quickscan.on('complete', function(data){
-  	
+
   	// Logs scanned info
   	const output = data[0]
 		console.log(output);
 	})
 
-		quickscan.on('error', function(error){
+	quickscan.on('error', function(error){
 		console.log(`Oops error occured`);
-	})
-  } 
+	}) 
 }
 
 
-// console.log(process.argv)
-
-// let optionDefinitions = [
-// 	{ name: 'target', alias: '-t', type: Number },
-// 	{ name: 'qscan', alias: '-qS', type:  Number }
-// 	// { name: 'banner', alias: 'b', type:  },
-// ]
+// NOTE:
+// if (yargs.argv.target) console.log(yargs.argv.target + '');
+// if (yargs.argv.memes) console.log('perform action');
