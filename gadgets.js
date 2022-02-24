@@ -83,14 +83,12 @@ console.log(usage(sections))
 // 	})
 //   } 
 // }
-
 const argv = yargs
 	.option('target', {
 		alias: 't',
 		type: 'boolean'
 	})
 	.argv;
-
 if (argv.target){
 	const quickscan = new nmap.QuickScan('127.0.0.1');
   	quickscan.on('complete', function(data){
