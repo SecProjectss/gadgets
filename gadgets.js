@@ -7,8 +7,8 @@
 const nmap = require('node-nmap');
 const usage = require('command-line-usage');
 const chalk = require('chalk');
-const readline = require('readline-sync');
-const args = require('command-line-args');
+// const readline = require('readline-sync');
+// const args = require('command-line-args');
 const yargs = require('yargs')(process.argv);
 const fs = require('fs');
 // const argv = require('minimist');
@@ -42,9 +42,9 @@ const sections = [
 	{
 		header:'Usage:', 
 		content:[
-			"$ node gadget.js --help",
-			"$ node gadget.js -qscan -t <ip>",
-			"$ node gadget.js -t [target] -qscan [Quick Scan]"
+			"$ ggg --help",
+			"$ ggg -qscan -t <ip>",
+			"$ ggg -t [target] -qscan [Quick Scan]"
 		]
 	},     
 	{
@@ -59,8 +59,8 @@ const sections = [
 	{
 		header:'Exmaples:',
 		content:[
-				{ name: 'node gadjets.js -t 127.0.0.1 --qscan' },
-				{ name: 'node gadjets.js -t www.example.com --banner -sS' }
+				{ name: 'ggg -t 127.0.0.1 --qscan' },
+				{ name: 'ggg -t www.example.com --banner -sS' }
 			]
 		}
 ]
