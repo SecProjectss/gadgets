@@ -5,7 +5,7 @@
   "main": "gadgets.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
-    "postversion": "git push --follow-tags"
+    "postversion": "npm publish --access public && git push --follow-tags"
   },
   "author": "DevDeclann",
   "license": "ISC",

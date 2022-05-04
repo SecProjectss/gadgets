@@ -2,9 +2,6 @@
 *.html
 .*ignore
 
-dist/f11
-dist/f11.xz
-
 !dist/**/*.js
 !*.d.ts
 !package.json
