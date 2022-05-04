@@ -1,10 +1,11 @@
 {
-  "name": "gadgets",
-  "version": "1.0.0",
+  "name": "gg-gadgets",
+  "version": "0.1.0",
   "description": "",
   "main": "gadgets.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "postversion": "git push --follow-tags"
   },
   "author": "DevDeclann",
   "license": "ISC",
